@@ -1,0 +1,18 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: pedidos-db
+    environment:
+      POSTGRES_USER: pedidos_user
+      POSTGRES_PASSWORD: pedidos123
+      POSTGRES_DB: pedidos
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
+
+
